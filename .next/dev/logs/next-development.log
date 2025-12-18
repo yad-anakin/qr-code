@@ -1,0 +1,98 @@
+[00:00:01.661] Server  LOG     ✓ Ready in 1084ms
+[00:00:04.728] Server  LOG     ○ Compiling / ...
+[00:00:05.393] Server  ERROR   ⨯ ./app/page.tsx:555:17
+Parsing ecmascript source code failed
+  553 |           </div>
+  554 |         </div>
+> 555 |       </section>
+      |                 ^
+> 556 |     </main>
+      | ^^^^^
+  557 |   );
+  558 | }
+  559 |
+
+Expected '</', got 'jsx text (
+    )'
+
+
+[00:00:08.392] Browser ERROR   uncaughtError: Error: ./app/page.tsx:555:17
+Parsing ecmascript source code failed
+  553 |           </div>
+  554 |         </div>
+> 555 |       </section>
+      |                 ^
+> 556 |     </main>
+      | ^^^^^
+  557 |   );
+  558 | }
+  559 |
+
+Expected '</', got 'jsx text (
+    )'
+
+
+[00:00:08.547] Browser ERROR   ./app/page.tsx:555:17
+Parsing ecmascript source code failed
+  553 |           </div>
+  554 |         </div>
+> 555 |       </section>
+      |                 ^
+> 556 |     </main>
+      | ^^^^^
+  557 |   );
+  558 | }
+  559 |
+
+Expected '</', got 'jsx text (
+    )'
+[00:00:08.662] Browser ERROR   ./app/page.tsx:555:17
+Parsing ecmascript source code failed
+  553 |           </div>
+  554 |         </div>
+> 555 |       </section>
+      |                 ^
+> 556 |     </main>
+      | ^^^^^
+  557 |   );
+  558 | }
+  559 |
+
+Expected '</', got 'jsx text (
+    )'
+[00:02:02.867] Server  LOG     ✓ Compiled in 340ms
+[00:02:04.788] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:49.859] Server  LOG     ✓ Compiled in 130ms
+[00:05:52.876] Server  LOG     ✓ Compiled in 230ms
+[00:06:53.059] Server  LOG     ✓ Compiled in 225ms
+[00:07:49.641] Server  LOG     ✓ Compiled in 163ms
+[00:13:35.802] Server  LOG     ✓ Compiled in 147ms
+[00:16:43.629] Server  LOG     ✓ Compiled in 172ms
+[00:19:42.527] Server  LOG     ✓ Compiled in 168ms
+[00:19:59.513] Server  LOG     ✓ Compiled in 229ms
+[00:20:40.868] Server  LOG     ✓ Compiled in 158ms
+[00:34:19.907] Server  LOG     ✓ Compiled in 135ms
+[00:35:03.026] Server  LOG     ✓ Compiled in 219ms
+[00:35:03.220] Browser ERROR   ./app/page.tsx:857:5
+Parsing ecmascript source code failed
+  855 |       </section>
+  856 |     </main>
+> 857 |   );
+      |     ^
+  858 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:39:23.312] Server  LOG     ✓ Compiled in 143ms
+[00:40:33.000] Server  LOG     ✓ Compiled in 168ms
+[00:44:59.109] Server  LOG     ✓ Compiled in 168ms
+[00:47:35.297] Server  LOG     ✓ Compiled in 194ms
+[00:50:03.194] Server  LOG     ✓ Compiled in 205ms
