@@ -18,10 +18,10 @@ export default function HomePage() {
   const [logoFrame, setLogoFrame] = useState(true);
   const [logoOpacity, setLogoOpacity] = useState(1);
   const [useTransparentBg, setUseTransparentBg] = useState(false);
-  const [preset, setPreset] = useState<'classic' | 'soft' | 'contrast'>('classic');
+  const [preset, setPreset] = useState<'classic' | 'soft' | 'contrast' | 'flag'>('classic');
   const [shape, setShape] = useState<'square' | 'rounded' | 'dots' | 'pill' | 'diamond'>('square');
   const [eyeShape, setEyeShape] = useState<'square' | 'rounded' | 'circle' | 'diamond'>('square');
-  const [eyeColor, setEyeColor] = useState('#000000');
+  const [eyeColor, setEyeColor] = useState<string | null>(null);
   const [gradientMode, setGradientMode] = useState<'solid' | 'linear' | 'radial'>('solid');
   const [fgColor2, setFgColor2] = useState('#000000');
 
@@ -53,7 +53,7 @@ export default function HomePage() {
     setTheme(next);
   };
 
-  const applyPreset = (nextPreset: 'classic' | 'soft' | 'contrast') => {
+  const applyPreset = (nextPreset: 'classic' | 'soft' | 'contrast' | 'flag') => {
     setPreset(nextPreset);
     setUseTransparentBg(false);
 
@@ -64,7 +64,8 @@ export default function HomePage() {
       setBgColor('#ffffff');
       setShape('square');
       setEyeShape('square');
-      setEyeColor('#000000');
+      // Corners follow dots by default for classic
+      setEyeColor(null);
       setGradientMode('solid');
       return;
     }
@@ -77,7 +78,8 @@ export default function HomePage() {
       setBgColor(softBg);
       setShape('rounded');
       setEyeShape('rounded');
-      setEyeColor(softFg);
+      // Corners follow dots by default for soft
+      setEyeColor(null);
       setGradientMode('solid');
       return;
     }
@@ -93,6 +95,23 @@ export default function HomePage() {
       setShape('dots');
       setEyeShape('square');
       setEyeColor('#ffffff');
+      setGradientMode('linear');
+      return;
+    }
+
+    if (nextPreset === 'flag') {
+      // Flag-inspired preset: red/white/green stripes in dots, white background, auto-colored corners
+      const flagRed = '#ED1C24';
+      const flagGreen = '#00923F';
+      const flagWhite = '#FFFFFF';
+
+      setFgColor(flagRed);
+      setFgColor2(flagGreen);
+      setBgColor(flagWhite);
+      setShape('square');
+      setEyeShape('square');
+      // Corners will auto-color (top red, bottom green) when eyeColor is null
+      setEyeColor(null);
       setGradientMode('linear');
     }
   };
@@ -144,8 +163,21 @@ export default function HomePage() {
       let dotGradient: CanvasGradient | null = null;
       if (gradientMode === 'linear') {
         dotGradient = ctx.createLinearGradient(0, 0, 0, size);
-        dotGradient.addColorStop(0, darkColor);
-        dotGradient.addColorStop(1, darkColor2);
+
+        if (preset === 'flag') {
+          // Flag-style stripes: top red, white band in the middle, strong green at the bottom
+          dotGradient.addColorStop(0, '#ED1C24');      // red start
+          dotGradient.addColorStop(0.36, '#ED1C24');   // red end
+
+          dotGradient.addColorStop(0.36, '#FFFFFF');  // white start
+          dotGradient.addColorStop(0.64, '#FFFFFF');  // white end
+
+          dotGradient.addColorStop(0.64, '#00923F');  // green start
+          dotGradient.addColorStop(1, '#00923F');     // green end
+        } else {
+          dotGradient.addColorStop(0, darkColor);
+          dotGradient.addColorStop(1, darkColor2);
+        }
       } else if (gradientMode === 'radial') {
         dotGradient = ctx.createRadialGradient(
           size / 2,
@@ -172,7 +204,21 @@ export default function HomePage() {
           const isEye = inTopLeftEye || inTopRightEye || inBottomLeftEye;
 
           const moduleShape = isEye ? eyeShape : shape;
-          const moduleColor = isEye ? (eyeColor || darkColor) : darkColor;
+          let moduleColor: string;
+          if (isEye) {
+            // For the flag preset with default corner color, make top eyes red and bottom eye green.
+            if (preset === 'flag' && eyeColor === null) {
+              if (inBottomLeftEye) {
+                moduleColor = '#00923F'; // green
+              } else {
+                moduleColor = '#ED1C24'; // red (top two corners)
+              }
+            } else {
+              moduleColor = eyeColor ?? darkColor;
+            }
+          } else {
+            moduleColor = darkColor;
+          }
 
           if (isEye) {
             ctx.fillStyle = moduleColor;
@@ -224,6 +270,40 @@ export default function HomePage() {
             ctx.fill();
           }
         }
+      }
+
+      // For the flag preset, draw the central emblem image if no custom logo is used
+      if (preset === 'flag' && !logoSrc) {
+        await new Promise<void>((resolve) => {
+          const img = new Image();
+          img.onload = () => {
+            try {
+              const ctx = canvas.getContext('2d');
+              if (!ctx) {
+                resolve();
+                return;
+              }
+
+              const size = Math.min(canvas.width, canvas.height);
+              const emblemSize = size * 0.3; // smaller than the logo frame
+              const x = (canvas.width - emblemSize) / 2;
+              const y = (canvas.height - emblemSize) / 2;
+
+              ctx.save();
+              ctx.globalAlpha = 1;
+              ctx.drawImage(img, x, y, emblemSize, emblemSize);
+              ctx.restore();
+            } catch (err) {
+              console.error('Failed to draw flag emblem on QR code', err);
+            }
+            resolve();
+          };
+          img.onerror = () => {
+            console.error('Failed to load flag emblem image from /image.png');
+            resolve();
+          };
+          img.src = '/image.png';
+        });
       }
 
       if (logoSrc) {
@@ -440,7 +520,7 @@ export default function HomePage() {
                     : 'Looks good, but always test with your phone.';
                   return (
                     <div
-                      className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 ${
+                      className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full border px-3 py-1 ${
                         risky
                           ? 'border-yellow-500/70 bg-yellow-500/10 text-yellow-600'
                           : 'border-emerald-500/60 bg-emerald-500/5 text-emerald-600'
@@ -565,12 +645,13 @@ export default function HomePage() {
                   {[
                     { id: 'classic', label: 'Classic' },
                     { id: 'soft', label: 'Soft' },
-                    { id: 'contrast', label: 'High contrast' }
+                    { id: 'contrast', label: 'High contrast' },
+                    { id: 'flag', label: 'Kurdistan flag' }
                   ].map((item) => (
                     <button
                       key={item.id}
                       type="button"
-                      onClick={() => applyPreset(item.id as 'classic' | 'soft' | 'contrast')}
+                      onClick={() => applyPreset(item.id as 'classic' | 'soft' | 'contrast' | 'flag')}
                       className={`rounded-full border px-3 py-1 font-medium transition ${
                         preset === item.id
                           ? 'border-primary bg-primary text-primary-foreground'
@@ -733,7 +814,7 @@ export default function HomePage() {
                     <span className="text-muted-foreground/80">Color</span>
                     <input
                       type="color"
-                      value={eyeColor}
+                      value={eyeColor ?? fgColor}
                       onChange={(e) => setEyeColor(e.target.value)}
                       className="h-6 w-6 cursor-pointer rounded border border-border bg-transparent"
                       aria-label="Corner eye color"

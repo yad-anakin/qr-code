@@ -1,98 +1,80 @@
-[00:00:01.661] Server  LOG     ✓ Ready in 1084ms
-[00:00:04.728] Server  LOG     ○ Compiling / ...
-[00:00:05.393] Server  ERROR   ⨯ ./app/page.tsx:555:17
-Parsing ecmascript source code failed
-  553 |           </div>
-  554 |         </div>
-> 555 |       </section>
-      |                 ^
-> 556 |     </main>
-      | ^^^^^
-  557 |   );
-  558 | }
-  559 |
-
-Expected '</', got 'jsx text (
-    )'
-
-
-[00:00:08.392] Browser ERROR   uncaughtError: Error: ./app/page.tsx:555:17
-Parsing ecmascript source code failed
-  553 |           </div>
-  554 |         </div>
-> 555 |       </section>
-      |                 ^
-> 556 |     </main>
-      | ^^^^^
-  557 |   );
-  558 | }
-  559 |
-
-Expected '</', got 'jsx text (
-    )'
-
-
-[00:00:08.547] Browser ERROR   ./app/page.tsx:555:17
-Parsing ecmascript source code failed
-  553 |           </div>
-  554 |         </div>
-> 555 |       </section>
-      |                 ^
-> 556 |     </main>
-      | ^^^^^
-  557 |   );
-  558 | }
-  559 |
-
-Expected '</', got 'jsx text (
-    )'
-[00:00:08.662] Browser ERROR   ./app/page.tsx:555:17
-Parsing ecmascript source code failed
-  553 |           </div>
-  554 |         </div>
-> 555 |       </section>
-      |                 ^
-> 556 |     </main>
-      | ^^^^^
-  557 |   );
-  558 | }
-  559 |
-
-Expected '</', got 'jsx text (
-    )'
-[00:02:02.867] Server  LOG     ✓ Compiled in 340ms
-[00:02:04.788] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:04:49.859] Server  LOG     ✓ Compiled in 130ms
-[00:05:52.876] Server  LOG     ✓ Compiled in 230ms
-[00:06:53.059] Server  LOG     ✓ Compiled in 225ms
-[00:07:49.641] Server  LOG     ✓ Compiled in 163ms
-[00:13:35.802] Server  LOG     ✓ Compiled in 147ms
-[00:16:43.629] Server  LOG     ✓ Compiled in 172ms
-[00:19:42.527] Server  LOG     ✓ Compiled in 168ms
-[00:19:59.513] Server  LOG     ✓ Compiled in 229ms
-[00:20:40.868] Server  LOG     ✓ Compiled in 158ms
-[00:34:19.907] Server  LOG     ✓ Compiled in 135ms
-[00:35:03.026] Server  LOG     ✓ Compiled in 219ms
-[00:35:03.220] Browser ERROR   ./app/page.tsx:857:5
-Parsing ecmascript source code failed
-  855 |       </section>
-  856 |     </main>
-> 857 |   );
-      |     ^
-  858 |
-
-Expected '}', got '<eof>'
-
-Import traces:
-  Client Component Browser:
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[00:39:23.312] Server  LOG     ✓ Compiled in 143ms
-[00:40:33.000] Server  LOG     ✓ Compiled in 168ms
-[00:44:59.109] Server  LOG     ✓ Compiled in 168ms
-[00:47:35.297] Server  LOG     ✓ Compiled in 194ms
-[00:50:03.194] Server  LOG     ✓ Compiled in 205ms
+[00:00:11.991] Server  LOG     ✓ Ready in 8.7s
+[00:00:15.934] Server  LOG     ○ Compiling / ...
+[00:00:29.565] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:18.878] Server  LOG     ✓ Compiled in 4.1s
+[00:02:19.215] Browser ERROR   `value` prop on `%s` should not be null. Consider using an empty string to clear the component or `undefined` for uncontrolled components. input
+[00:02:35.720] Server  LOG     ✓ Compiled in 209ms
+[00:02:36.222] Browser ERROR   A component is changing an uncontrolled input to be controlled. This is likely caused by the value changing from undefined to a defined value, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://react.dev/link/controlled-components
+[00:05:39.029] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:07:16.169] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:08:41.996] Server  LOG     ✓ Compiled in 365ms
+[00:09:43.622] Server  LOG     ✓ Compiled in 262ms
+[00:13:30.603] Server  LOG     ✓ Compiled in 532ms
+[00:15:18.962] Server  LOG     ✓ Compiled in 244ms
+[00:15:52.676] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:16:54.784] Server  LOG     ✓ Compiled in 313ms
+[00:18:09.020] Server  LOG     ✓ Compiled in 483ms
+[00:19:08.407] Server  LOG     ✓ Compiled in 211ms
+[00:19:32.496] Server  LOG     ✓ Compiled in 283ms
+[00:19:50.342] Server  LOG     ✓ Compiled in 254ms
+[00:20:06.373] Server  LOG     ✓ Compiled in 228ms
+[00:20:27.584] Server  LOG     ✓ Compiled in 281ms
+[00:20:35.877] Server  LOG     ✓ Compiled in 305ms
+[00:20:56.749] Server  LOG     ✓ Compiled in 265ms
+[00:21:22.856] Server  LOG     ✓ Compiled in 330ms
+[00:21:47.023] Server  LOG     ✓ Compiled in 277ms
+[00:22:05.714] Server  LOG     ✓ Compiled in 227ms
+[00:22:19.262] Server  LOG     ✓ Compiled in 362ms
+[00:22:39.213] Server  LOG     ✓ Compiled in 293ms
+[00:22:55.577] Server  LOG     ✓ Compiled in 365ms
+[00:23:07.096] Server  LOG     ✓ Compiled in 321ms
+[00:23:21.837] Server  LOG     ✓ Compiled in 267ms
+[00:23:35.903] Server  LOG     ✓ Compiled in 284ms
+[00:23:48.103] Server  LOG     ✓ Compiled in 493ms
+[00:23:58.203] Server  LOG     ✓ Compiled in 265ms
+[00:24:25.092] Server  LOG     ✓ Compiled in 592ms
+[00:24:31.604] Server  LOG     ✓ Compiled in 273ms
+[00:24:44.272] Server  LOG     ✓ Compiled in 296ms
+[00:24:59.357] Server  LOG     ✓ Compiled in 303ms
+[00:25:12.295] Server  LOG     ✓ Compiled in 238ms
+[00:25:18.348] Server  LOG     ✓ Compiled in 301ms
+[00:25:28.657] Server  LOG     ✓ Compiled in 221ms
+[00:25:35.704] Server  LOG     ✓ Compiled in 246ms
+[00:25:46.195] Server  LOG     ✓ Compiled in 327ms
+[00:26:16.387] Server  LOG     ✓ Compiled in 243ms
+[00:26:44.860] Server  LOG     ✓ Compiled in 266ms
+[00:26:57.022] Server  LOG     ✓ Compiled in 279ms
+[00:27:07.058] Server  LOG     ✓ Compiled in 316ms
+[00:27:18.348] Server  LOG     ✓ Compiled in 255ms
+[00:27:24.558] Server  LOG     ✓ Compiled in 313ms
+[00:27:28.180] Server  LOG     ✓ Compiled in 240ms
+[00:27:37.661] Server  LOG     ✓ Compiled in 236ms
+[00:27:55.674] Server  LOG     ✓ Compiled in 204ms
+[00:28:08.059] Server  LOG     ✓ Compiled in 275ms
+[00:28:25.072] Server  LOG     ✓ Compiled in 497ms
+[00:28:40.614] Server  LOG     ✓ Compiled in 302ms
+[00:28:52.196] Server  LOG     ✓ Compiled in 198ms
+[00:29:05.768] Server  LOG     ✓ Compiled in 265ms
+[00:29:17.063] Server  LOG     ✓ Compiled in 340ms
+[00:29:36.149] Server  LOG     ✓ Compiled in 412ms
+[00:29:51.083] Server  LOG     ✓ Compiled in 253ms
+[00:30:08.370] Server  LOG     ✓ Compiled in 241ms
+[00:30:18.543] Server  LOG     ✓ Compiled in 196ms
+[00:30:33.674] Server  LOG     ✓ Compiled in 253ms
+[00:30:45.189] Server  LOG     ✓ Compiled in 264ms
+[00:31:18.756] Server  LOG     ✓ Compiled in 253ms
+[00:31:32.236] Server  LOG     ✓ Compiled in 251ms
+[00:31:58.348] Server  LOG     ✓ Compiled in 240ms
+[00:32:33.455] Server  LOG     ✓ Compiled in 271ms
+[00:33:01.058] Server  LOG     ✓ Compiled in 266ms
+[00:33:17.269] Server  LOG     ✓ Compiled in 254ms
+[00:33:41.034] Server  LOG     ✓ Compiled in 273ms
+[00:35:38.531] Server  LOG     ✓ Compiled in 274ms
+[00:37:09.700] Server  LOG     ✓ Compiled in 370ms
+[00:37:28.200] Server  LOG     ✓ Compiled in 311ms
+[00:38:53.753] Server  LOG     ✓ Compiled in 273ms
+[00:39:47.812] Server  LOG     ✓ Compiled in 242ms
+[00:45:29.294] Server  LOG     ✓ Compiled in 520ms
+[00:45:42.838] Browser ERROR   Failed to load flag emblem image from /image.png
+[00:45:45.557] Browser ERROR   Failed to load flag emblem image from /image.png
+[00:48:40.454] Server  LOG     ✓ Compiled in 294ms
